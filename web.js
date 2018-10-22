@@ -2,8 +2,10 @@ const express = require('express')
 const app = express()
 const stripe = require('stripe')
 
-app.listen(3003, ()=>{
-    console.log("Server up and listening on port: 3003")
+const PORT = process.end.PORT || 3003
+
+app.listen(PORT, ()=>{
+    console.log("Server up and listening on port: " + PORT)
 })
 app.get('/',(req,res)=>{
     res.send('This is my app!')
