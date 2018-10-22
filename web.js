@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const stripe = require('stripe')
 
-const PORT = process.end.PORT || 3003
+const PORT = process.env.PORT || 3003
 
 app.listen(PORT, ()=>{
     console.log("Server up and listening on port: " + PORT)
