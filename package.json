@@ -1,10 +1,11 @@
 {
-  "name": "spoonful_backend",
+  "name": "spoonful",
   "version": "1.0.0",
-  "description": "",
+  "description": "For use with the Spoonful iOS application and Stripe.",
   "main": "web.js",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "stripe": "^6.12.1"
   },
   "devDependencies": {},
   "scripts": {
