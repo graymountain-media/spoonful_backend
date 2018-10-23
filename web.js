@@ -12,7 +12,7 @@ app.get('/',(req,res)=>{
 })
 
 app.post('/ephemeral_keys',(req,res)=>{
-    const stripe_Version = req.query.api_version
+    const stripe_version = req.query.api_version
     if (!stripe_version) {
         res.status(400).end();
         res.send("No Stripe version")
