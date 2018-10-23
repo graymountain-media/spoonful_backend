@@ -11,7 +11,7 @@ app.get('/',(req,res)=>{
     res.send('This is my app! Hell yeah!')
 })
 
-app.post('/ephemeral_key',(req,res)=>{
+app.post('/ephemeral_keys',(req,res)=>{
     const stripeVersion = req.query.api_version
     if (!stripe_version) {
         res.status(400).end();
