@@ -4,6 +4,7 @@
   "description": "For use with the Spoonful iOS application and Stripe.",
   "main": "web.js",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "stripe": "^6.12.1"
   },
