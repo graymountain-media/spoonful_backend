@@ -16,7 +16,6 @@ app.post('/ephemeral_keys',(req,res)=>{
     console.log('Stripe Version: ' + stripe_version)
     if (!stripe_version) {
         res.status(400).end();
-        res.send("No Stripe version")
         return;
       }
       // This function assumes that some previous middleware has determined the
