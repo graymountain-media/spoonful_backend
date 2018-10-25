@@ -32,6 +32,7 @@ app.post('/ephemeral_keys',(req,res)=>{
       ).then((key) => {
         res.status(200).json(key);
       }).catch((err) => {
+        console.log(err)
         res.status(500).end();
       });
 })
