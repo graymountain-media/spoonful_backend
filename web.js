@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const stripe = require('stripe')
+const stripe = require('stripe')('sk_test_4d2d71YdjTMjxJJVknsPJcvO')
 
 const PORT = process.env.PORT || 3003
 
@@ -20,7 +20,7 @@ app.post('/ephemeral_keys',(req,res)=>{
       }
       // This function assumes that some previous middleware has determined the
       // correct customerId for the session and saved it on the request object.
-      stripe.ephemeralKeys.create(
+      stripe.ephemeral.create(
         {customer: req.customerId},
         {stripe_version: stripe_version}
       ).then((key) => {
