@@ -27,7 +27,7 @@ app.post('/ephemeral_keys',(req,res)=>{
       // This function assumes that some previous middleware has determined the
       // correct customerId for the session and saved it on the request object.
       stripe.ephemeralKeys.create(
-        {customer: req.customerId},
+        {customer: req.query.customerId},
         {stripe_version: stripe_version}
       ).then((key) => {
         res.status(200).json(key);
