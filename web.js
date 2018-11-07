@@ -38,7 +38,7 @@ app.post('/ephemeral_keys',(req,res)=>{
 })
 
 app.post('/charge',(req,res)=>{
-  const token = request.body.stripeToken
+  const token = req.body.stripeToken
   const charge = stripe.charges.create ({
     amount: req.body.amount,
     currency: req.body.currency,
