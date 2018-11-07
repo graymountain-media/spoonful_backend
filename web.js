@@ -36,3 +36,13 @@ app.post('/ephemeral_keys',(req,res)=>{
         res.status(500).end();
       });
 })
+
+app.post('/charge',(req,res)=>{
+  const token = request.body.stripeToken
+  const charge = stripe.charges.create ({
+    amount: req.body.amount,
+    currency: req.body.currency,
+    description: 'Example charge',
+    source: token
+  })
+})
