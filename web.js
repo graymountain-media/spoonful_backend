@@ -38,11 +38,23 @@ app.post('/ephemeral_keys',(req,res)=>{
 })
 
 app.post('/charge',(req,res)=>{
-  const token = req.body.stripeToken
+  
+  const customer = req.body.customer
+  const amount = req.body.amount
+  const currency = req.body.currency
+
   const charge = stripe.charges.create ({
-    amount: req.body.amount,
-    currency: req.body.currency,
+    customer: customer,
+    amount: amount,
+    currency: currency,
     description: 'Example charge',
     source: token
+  }, function(err,charge){
+    if (err){
+      console.log(err)
+      res.status(500).end()
+    } else { 
+      res.status(200).end()
+    }
   })
 })
