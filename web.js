@@ -47,8 +47,7 @@ app.post('/charge',(req,res)=>{
     customer: customer,
     amount: amount,
     currency: currency,
-    description: 'Example charge',
-    source: token
+    description: 'Example charge'
   }, function(err,charge){
     if (err){
       console.log(err)
