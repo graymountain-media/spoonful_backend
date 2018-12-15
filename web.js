@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const PORT = process.env.PORT || 3003
 
 var braintree = require("braintree");
+var customerId = ""
 
 var gateway = braintree.connect({
   environment: braintree.Environment.Sandbox,
@@ -24,7 +25,7 @@ app.listen(PORT, ()=>{
 })
 
 gateway.clientToken.generate({
-  customerId: aCustomerId
+  customerId: customerId
 }, function (err, response) {
   var clientToken = response.clientToken
 });
@@ -34,7 +35,8 @@ app.get('/',(req,res)=>{
 })
 
 app.get("/client_token", function (req, res) {
-  gateway.clientToken.generate({}, function (err, response) {
+  customerId = req.body.customerId
+  gateway.clientToken.generate({customerId: customerId}, function (err, response) {
     res.send(response.clientToken);
   });
 });
