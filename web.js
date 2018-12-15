@@ -36,7 +36,7 @@ app.get('/',(req,res)=>{
 
 app.get("/client_token", function (req, res) {
   customerId = req.body.customerId
-  gateway.clientToken.generate({customerId: customerId}, function (err, response) {
+  gateway.clientToken.generate({}, function (err, response) {
     res.send(response.clientToken);
   });
 });
