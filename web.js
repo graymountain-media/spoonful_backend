@@ -8,10 +8,10 @@ var braintree = require("braintree");
 //var customerId = ""
 
 var gateway = braintree.connect({
-  environment: braintree.Environment.Sandbox,
-  merchantId: "k2z7jdk8znqf6y3p",
-  publicKey: "kg47c9snxby9prwm",
-  privateKey: "9530676083d31b2f88e43964cb59d18a"
+  environment:  braintree.Environment.Sandbox,
+  merchantId:   'k2z7jdk8znqf6y3p',
+  publicKey:    'kg47c9snxby9prwm',
+  privateKey:   '9530676083d31b2f88e43964cb59d18a'
 });
 
 app.use(bodyParser.json())
