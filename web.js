@@ -31,10 +31,10 @@ app.get('/',(req,res)=>{
 })
 
 app.get("/client_token", function (req, res) {
-  var customerId = req.body.customerId
+  var customerID = req.body.customerId
 
   gateway.clientToken.generate({
-    customerId: customerId
+    customerId: customerID
   }, function (err, response) {
     var clientToken = response.clientToken
   });
