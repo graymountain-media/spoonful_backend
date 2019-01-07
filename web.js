@@ -30,7 +30,7 @@ app.get('/',(req,res)=>{
     res.send('This is my app! Hell yeah!')
 })
 
-app.get("/client_token", function (req, res) {
+app.get("/client_token", function (req, res){
   var customerID = req.body.customerId
 
   gateway.clientToken.generate({
@@ -43,6 +43,27 @@ app.get("/client_token", function (req, res) {
     res.status(200).json(response.clientToken);
   });
 });
+
+app.get("/create_customer", function (req, res){
+  gateway.customer.create({
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    phone: req.body.phone
+  }, function (err, result) {
+    if (err instanceof Error) {
+      throw err;
+    } else {
+      res.status(200).json(response.customer.id)
+    }
+    
+    // result.success;
+    // // true
+  
+    // result.customer.id;
+    // // e.g. 494019
+  });
+})
 /*
 app.post('/ephemeral_keys',(req,res)=>{
     const stripe_version = req.query.api_version
