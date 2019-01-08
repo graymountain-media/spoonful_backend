@@ -30,8 +30,8 @@ app.get('/',(req,res)=>{
     res.send('This is my app! Hell yeah!')
 })
 
-app.get("/client_token", function (req, res){
-  var customerID = req.body.customerId
+app.post("/client_token", function (req, res){
+  var customerID = req.query.customerId
 
   gateway.clientToken.generate({
     //customerId: customerID
