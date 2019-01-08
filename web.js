@@ -31,6 +31,8 @@ app.get('/',(req,res)=>{
 })
 
 app.post("/client_token", function (req, res){
+  console.log("Client token generating...")
+  console.log(req.query.customerId)
   var customerID = req.query.customerId
 
   gateway.clientToken.generate({
