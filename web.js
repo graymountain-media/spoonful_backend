@@ -36,7 +36,7 @@ app.post("/client_token", function (req, res){
   var customerID = req.query.customerId
 
   gateway.clientToken.generate({
-    //customerId: customerID
+    customerId: customerID
   }, function (err, response) {
     var clientToken = response.clientToken
   });
