@@ -44,11 +44,11 @@ app.get("/client_token", function (req, res){
   });
 });
 
-app.get("/create_customer", function (req, res){
+app.post("/create_customer", function (req, res){
   gateway.customer.create({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email
+    firstName: req.query.firstName,
+    lastName: req.query.lastName,
+    email: req.query.email
   }, function (err, result) {
     if (err instanceof Error) {
       throw err;
