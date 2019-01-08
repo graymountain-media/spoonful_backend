@@ -38,12 +38,12 @@ app.post("/client_token", function (req, res){
   gateway.clientToken.generate({
     customerId: customerID
   }, function (err, response) {
-    var clientToken = response.clientToken
+    res.status(200).json(response.clientToken)
   });
 
-  gateway.clientToken.generate({}, function (err, response) {
-    res.status(200).json(response.clientToken);
-  });
+  // gateway.clientToken.generate({}, function (err, response) {
+  //   res.status(200).json(response.clientToken);
+  // });
 });
 
 app.post("/create_customer", function (req, res){
