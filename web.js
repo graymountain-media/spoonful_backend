@@ -53,7 +53,8 @@ app.get("/create_customer", function (req, res){
     if (err instanceof Error) {
       throw err;
     } else {
-      res.status(200).json(response.customer.id)
+      console.log(result.customer.id)
+      res.status(200).json(result.customer.id)
     }
     
     // result.success;
