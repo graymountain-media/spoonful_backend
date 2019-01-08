@@ -48,8 +48,7 @@ app.get("/create_customer", function (req, res){
   gateway.customer.create({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
-    email: req.body.email,
-    phone: req.body.phone
+    email: req.body.email
   }, function (err, result) {
     if (err instanceof Error) {
       throw err;
