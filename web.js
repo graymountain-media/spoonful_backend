@@ -38,7 +38,13 @@ app.post("/client_token", function (req, res){
   gateway.clientToken.generate({
     customerId: customerID
   }, function (err, response) {
-    res.status(200).json(response.clientToken)
+    if (err instanceof Error) {
+      throw err;
+    } else {
+      console.log("TOKEN GENERATED")
+      console.log(response.clientToken)
+      res.status(200).json(response.clientToken)
+    }
   });
 
   // gateway.clientToken.generate({}, function (err, response) {
