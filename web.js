@@ -13,6 +13,12 @@ var gateway = braintree.connect({
   publicKey:    'kg47c9snxby9prwm',
   privateKey:   '9530676083d31b2f88e43964cb59d18a'
 });
+// var gateway = braintree.connect({
+//   environment:  braintree.Environment.Sandbox,
+//   merchantId:   'k2z7jdk8znqf6y3p',
+//   publicKey:    'kg47c9snxby9prwm',
+//   privateKey:   '9530676083d31b2f88e43964cb59d18a'
+// });
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
@@ -32,7 +38,6 @@ app.get('/',(req,res)=>{
 
 app.post("/client_token", function (req, res){
   console.log("Client token generating...")
-  console.log(req.query.customerId)
   var customerID = req.query.customerId
 
   gateway.clientToken.generate({
@@ -42,14 +47,9 @@ app.post("/client_token", function (req, res){
       throw err;
     } else {
       console.log("TOKEN GENERATED")
-      console.log(response.clientToken)
       res.status(200).json(response.clientToken)
     }
   });
-
-  // gateway.clientToken.generate({}, function (err, response) {
-  //   res.status(200).json(response.clientToken);
-  // });
 });
 
 app.post("/create_customer", function (req, res){
@@ -61,17 +61,29 @@ app.post("/create_customer", function (req, res){
     if (err instanceof Error) {
       throw err;
     } else {
-      console.log(result.customer.id)
       res.status(200).json(result.customer.id)
     }
-    
-    // result.success;
-    // // true
-  
-    // result.customer.id;
-    // // e.g. 494019
   });
 })
+
+app.post("/checkout", function (req, res) {
+  var nonce = req.query.paymentMethodNonce;
+  var amount = req.query.amount;
+
+  gateway.transaction.sale({
+    amount: "10.00",
+    paymentMethodNonce: nonceFromTheClient,
+    options: {
+      submitForSettlement: true
+    }
+  }, function (err, result) {
+    if (err instanceof Error) {
+      throw err;
+    } else {
+      res.status(200).json(result)
+    }
+  });
+});
 /*
 app.post('/ephemeral_keys',(req,res)=>{
     const stripe_version = req.query.api_version
