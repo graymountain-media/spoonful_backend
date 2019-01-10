@@ -71,8 +71,8 @@ app.post("/checkout", function (req, res) {
   var amount = req.query.amount;
 
   gateway.transaction.sale({
-    amount: "10.00",
-    paymentMethodNonce: nonceFromTheClient,
+    amount: amount,
+    paymentMethodNonce: nonce,
     options: {
       submitForSettlement: true
     }
